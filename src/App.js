@@ -1,12 +1,20 @@
 import React, { Component } from 'react';
-import './App.css';
+import { BrowserRouter, Route } from 'react-router-dom';
+
+import MainLayout from './components/MainLayout';
+import ReadPageContainer from './containers/ReadPageContainer';
+import WritePageContainer from './containers/WritePageContainer';
 
 class App extends Component {
   render() {
     return (
-      <div className='App'>
-        Bulletin Board project with React, Java and Spark
-      </div>
+      <BrowserRouter>
+        <MainLayout>
+          <Route exact path='/' component={ReadPageContainer} />
+          <Route path='/read' component={ReadPageContainer} />
+          <Route path='/write' component={WritePageContainer} />
+        </MainLayout>
+      </BrowserRouter>
     );
   }
 }
