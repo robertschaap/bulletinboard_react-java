@@ -5,9 +5,9 @@ import java.util.HashMap;
 import com.google.gson.Gson;
 
 public class ApiResponse {
-  HashMap<String, Object> data;
   String status = "";
   String message = "";
+  HashMap<String, Object> data;
 
   public void setData(HashMap<String, Object> data) {
     this.data = data;
