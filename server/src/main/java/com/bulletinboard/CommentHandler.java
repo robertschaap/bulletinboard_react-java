@@ -5,7 +5,7 @@ import java.util.HashMap;
 import spark.Request;
 import spark.Response;
 
-class CommentHandler {
+public class CommentHandler {
   public static ApiResponse getComments(Request req, Response res) {
 
     ApiResponse apiResponse = new ApiResponse();
