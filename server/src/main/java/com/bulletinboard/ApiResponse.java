@@ -4,8 +4,8 @@ import java.util.HashMap;
 
 public class ApiResponse {
   HashMap<String, Object> data;
-  String status;
-  String message;
+  String status = "";
+  String message = "";
 
   public void setData(HashMap<String, Object> data) {
     this.data = data;
