@@ -2,7 +2,7 @@ package com.bulletinboard;
 
 import java.util.HashMap;
 
-class ApiResponse {
+public class ApiResponse {
   HashMap<String, Object> data;
   String status;
   String message;
