@@ -2,6 +2,8 @@ package com.bulletinboard;
 
 import java.util.HashMap;
 
+import com.google.gson.Gson;
+
 public class ApiResponse {
   HashMap<String, Object> data;
   String status = "";
@@ -17,5 +19,9 @@ public class ApiResponse {
 
   public void setMessage(String message) {
     this.message = message;
+  }
+
+  public String toJson() {
+    return new Gson().toJson(this);
   }
 }

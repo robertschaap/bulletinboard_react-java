@@ -6,14 +6,13 @@ import spark.Request;
 import spark.Response;
 
 public class CommentHandler {
-  public static ApiResponse getComments(Request req, Response res) {
-
+  public static String getComments(Request req, Response res) {
     ApiResponse apiResponse = new ApiResponse();
     HashMap<String, Object> data = new HashMap<>();
 
     apiResponse.setStatus("success");
     apiResponse.setData(data);
 
-    return apiResponse;
+    return apiResponse.toJson();
   };
 }
