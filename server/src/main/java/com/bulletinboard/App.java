@@ -8,6 +8,7 @@ public class App {
   public static void main( String[] args ) {
       port(port);
       System.out.println("Running on http://localhost:" + port);
-      get("/", (req, res) -> "Hello World!");
+
+      get("/api/comments", CommentHandler::getComments);
   }
 }
