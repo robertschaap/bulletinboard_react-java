@@ -13,6 +13,8 @@ public class CommentHandler {
     apiResponse.setStatus("success");
     apiResponse.setData(data);
 
+    res.type("application/json");
+
     return apiResponse.toJson();
   };
 }
