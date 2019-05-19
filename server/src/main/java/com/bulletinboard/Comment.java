@@ -1,7 +1,7 @@
 package com.bulletinboard;
 
 public class Comment {
-  public int id;
+  public int id = 0;
   public String title;
   public String body;
   public String name;
