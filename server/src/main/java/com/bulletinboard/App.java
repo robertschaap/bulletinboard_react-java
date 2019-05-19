@@ -10,5 +10,6 @@ public class App {
       System.out.println("Running on http://localhost:" + port);
 
       get("/api/comments", CommentHandler::getComments);
+      post("/api/comments", CommentHandler::postComments);
   }
 }
