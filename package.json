@@ -10,7 +10,6 @@
     "styled-components": "^4.2.0"
   },
   "devDependencies": {
-    "babel-eslint": "^10.0.2",
     "eslint": "^5.16.0"
   },
   "scripts": {
