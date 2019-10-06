@@ -10,7 +10,8 @@ public enum ApiStatusResponse {
     this.status = status;
   }
 
-  public String getStatus() {
+  @Override
+  public String toString() {
     return status;
   }
 }
