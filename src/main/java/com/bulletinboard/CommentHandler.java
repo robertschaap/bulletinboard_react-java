@@ -39,34 +39,25 @@ public class CommentHandler {
   private static CommentModel model = new CommentModel();
 
   public static String getComments(Request req, Response res) {
-    ApiResponse apiResponse = new ApiResponse();
-    HashMap<String, Object> data = new HashMap<>();
-
-    data.put("comments", model.getComments());
-
-    apiResponse.setStatus(ApiStatusResponse.SUCCESS);
-    apiResponse.setData(data);
-
     res.type("application/json");
 
-    return apiResponse.toJson();
+    HashMap<String, Object> data = new HashMap<>();
+    data.put("comments", model.getComments());
+
+    return new ApiResponse(ApiStatusResponse.SUCCESS, data).toJson();
   };
 
   public static String postComments(Request req, Response res) {
     res.type("application/json");
 
-    ApiResponse apiResponse = new ApiResponse();
     Type type = new TypeToken<Map<String, String>>(){}.getType();
     Map<String, String> map = new Gson().fromJson(req.body(), type);
 
     if (map.containsKey("title") && map.containsKey("body") && map.containsKey("name")) {
       model.addComment(map.get("title"), map.get("body"), map.get("name"));
-      apiResponse.setStatus(ApiStatusResponse.SUCCESS);
-      return apiResponse.toJson();
+      return new ApiResponse(ApiStatusResponse.SUCCESS, "message").toJson();
     }
 
-    apiResponse.setStatus(ApiStatusResponse.ERROR);
-    apiResponse.setMessage("error");
-    return apiResponse.toJson();
+    return new ApiResponse(ApiStatusResponse.ERROR, "error").toJson();
   }
 }
