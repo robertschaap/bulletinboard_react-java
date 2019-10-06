@@ -52,7 +52,7 @@ public class CommentHandler {
     return apiResponse.toJson();
   };
 
-  public static String postCommesnts(Request req, Response res) {
+  public static String postComments(Request req, Response res) {
     res.type("application/json");
 
     ApiResponse apiResponse = new ApiResponse();
