@@ -11,18 +11,37 @@ import com.google.gson.reflect.TypeToken;
 import spark.Request;
 import spark.Response;
 
+class CommentModel {
+  ArrayList<Comment> comments = new ArrayList<Comment>();
+
+  public CommentModel() {
+    this.comments.add(new Comment(0, "title0", "body0", "name0"));
+    this.comments.add(new Comment(1, "title1", "body1", "name1"));
+    this.comments.add(new Comment(2, "title2", "body2", "name2"));
+    this.comments.add(new Comment(3, "title3", "body3", "name3"));
+    this.comments.add(new Comment(4, "title4", "body4", "name4"));
+    this.comments.add(new Comment(5, "title5", "body5", "name5"));
+    this.comments.add(new Comment(6, "title6", "body6", "name6"));
+    this.comments.add(new Comment(7, "title7", "body7", "name7"));
+  }
+
+  public void addComment(Comment comment) {
+    this.comments.add(comment);
+  }
+
+  public ArrayList<Comment> getComments() {
+    return this.comments;
+  }
+}
+
 public class CommentHandler {
+  private static CommentModel model = new CommentModel();
+
   public static String getComments(Request req, Response res) {
     ApiResponse apiResponse = new ApiResponse();
     HashMap<String, Object> data = new HashMap<>();
 
-    ArrayList<Comment> comments = new ArrayList<Comment>();
-    comments.add(new Comment(1, "title", "body", "name"));
-    comments.add(new Comment(2, "title", "body", "name"));
-    comments.add(new Comment(3, "title", "body", "name"));
-    comments.add(new Comment(4, "title", "body", "name"));
-    comments.add(new Comment(5, "title", "body", "name"));
-    data.put("comments", comments);
+    data.put("comments", model.getComments());
 
     apiResponse.setStatus("success");
     apiResponse.setData(data);
