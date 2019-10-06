@@ -28,11 +28,12 @@ public class CommentHandler {
     Type type = new TypeToken<Map<String, String>>(){}.getType();
     Map<String, String> map = new Gson().fromJson(req.body(), type);
 
-    if (map.containsKey("title") && map.containsKey("body") && map.containsKey("name")) {
+    try {
       model.addComment(map.get("title"), map.get("body"), map.get("name"));
       return new ApiResponse(ApiStatusResponse.SUCCESS, "message").toJson();
+    } catch (IllegalArgumentException exception) {
+      System.out.println(exception);
+      return new ApiResponse(ApiStatusResponse.ERROR, "error").toJson();
     }
-
-    return new ApiResponse(ApiStatusResponse.ERROR, "error").toJson();
   }
 }

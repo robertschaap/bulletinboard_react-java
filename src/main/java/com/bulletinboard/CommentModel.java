@@ -17,7 +17,10 @@ class CommentModel {
     this.comments.add(new Comment(++commentId, "title7", "body7", "name7"));
   }
 
-  public void addComment(String title, String body, String name) {
+  public void addComment(String title, String body, String name) throws IllegalArgumentException {
+    if (title == null || body == null || name == null) {
+      throw new IllegalArgumentException("None of the arguments must be null");
+    }
     this.comments.add(new Comment(++commentId, title, body, name));
   }
 
