@@ -44,7 +44,7 @@ public class CommentHandler {
 
     data.put("comments", model.getComments());
 
-    apiResponse.setStatus("success");
+    apiResponse.setStatus(ApiStatusResponse.SUCCESS);
     apiResponse.setData(data);
 
     res.type("application/json");
@@ -52,7 +52,7 @@ public class CommentHandler {
     return apiResponse.toJson();
   };
 
-  public static String postComments(Request req, Response res) {
+  public static String postCommesnts(Request req, Response res) {
     res.type("application/json");
 
     ApiResponse apiResponse = new ApiResponse();
@@ -61,11 +61,11 @@ public class CommentHandler {
 
     if (map.containsKey("title") && map.containsKey("body") && map.containsKey("name")) {
       model.addComment(map.get("title"), map.get("body"), map.get("name"));
-      apiResponse.setStatus("success");
+      apiResponse.setStatus(ApiStatusResponse.SUCCESS);
       return apiResponse.toJson();
     }
 
-    apiResponse.setStatus("error");
+    apiResponse.setStatus(ApiStatusResponse.ERROR);
     apiResponse.setMessage("error");
     return apiResponse.toJson();
   }

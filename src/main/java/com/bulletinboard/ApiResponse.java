@@ -5,7 +5,7 @@ import java.util.HashMap;
 import com.google.gson.Gson;
 
 public class ApiResponse {
-  public String status = "";
+  public ApiStatusResponse status = null;
   public String message = "";
   public HashMap<String, Object> data;
 
@@ -13,7 +13,7 @@ public class ApiResponse {
     this.data = data;
   }
 
-  public void setStatus(String status) {
+  public void setStatus(ApiStatusResponse status) {
     this.status = status;
   }
 
