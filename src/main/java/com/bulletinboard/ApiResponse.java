@@ -9,9 +9,6 @@ public class ApiResponse {
   public String message = "";
   public HashMap<String, Object> data;
 
-  public ApiResponse() {
-  }
-
   public ApiResponse(ApiStatusResponse status, HashMap<String, Object> data) {
     this.status = status.toString();
     this.data = data;
@@ -19,18 +16,6 @@ public class ApiResponse {
 
   public ApiResponse(ApiStatusResponse status, String message) {
     this.status = status.toString();
-    this.message = message;
-  }
-
-  public void setData(HashMap<String, Object> data) {
-    this.data = data;
-  }
-
-  public void setStatus(ApiStatusResponse status) {
-    this.status = status.toString();
-  }
-
-  public void setMessage(String message) {
     this.message = message;
   }
 
