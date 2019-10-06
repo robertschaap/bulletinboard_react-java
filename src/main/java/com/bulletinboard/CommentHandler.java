@@ -26,8 +26,8 @@ class CommentModel {
     this.comments.add(new Comment(++commentId, "title7", "body7", "name7"));
   }
 
-  public void addComment(Comment comment) {
-    this.comments.add(comment);
+  public void addComment(String title, String body, String name) {
+    this.comments.add(new Comment(++commentId, title, body, name));
   }
 
   public ArrayList<Comment> getComments() {
@@ -60,6 +60,7 @@ public class CommentHandler {
     Map<String, String> map = new Gson().fromJson(req.body(), type);
 
     if (map.containsKey("title") && map.containsKey("body") && map.containsKey("name")) {
+      model.addComment(map.get("title"), map.get("body"), map.get("name"));
       apiResponse.setStatus("success");
       return apiResponse.toJson();
     }
