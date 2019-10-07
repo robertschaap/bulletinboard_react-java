@@ -1,6 +1,7 @@
 package com.bulletinboard;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 class CommentModel {
@@ -27,6 +28,16 @@ class CommentModel {
 
   public List<Comment> getComments(Integer offset) {
     int limit = 4;
-    return this.comments.subList(offset - limit, offset);
+    return sortComments("desc").subList(offset - limit, offset);
+  }
+
+  public List<Comment> sortComments(String sort) {
+    if (sort == "desc") {
+      return this.comments;
+    }
+
+    List<Comment> reversedComments = this.comments;
+    Collections.reverse(reversedComments);
+    return reversedComments;
   }
 }
