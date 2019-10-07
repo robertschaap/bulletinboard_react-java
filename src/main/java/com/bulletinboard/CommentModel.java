@@ -27,9 +27,9 @@ class CommentModel {
   }
 
   public List<Comment> getComments(String sort, Integer offset) {
-    int limit = 4;
-    int index = 4 + (offset * 4);
-    return sortComments(sort).subList(index - limit, index);
+    List<Comment> sortedComments = sortComments(sort);
+    List<Comment> pagedComments = pageComments(sortedComments, offset);
+    return pagedComments;
   }
 
   public List<Comment> sortComments(String sort) {
@@ -40,5 +40,21 @@ class CommentModel {
     List<Comment> comments = new ArrayList<Comment>(this.comments);
     Collections.reverse(comments);
     return comments;
+  }
+
+  public List<Comment> pageComments(List<Comment> comments, Integer offset) {
+    int limit = 4;
+    int endIndex = limit + (offset * limit);
+    int startIndex = offset * limit;
+
+    if (startIndex > comments.size()) {
+      return new ArrayList<Comment>();
+    }
+
+    if (endIndex > comments.size()) {
+      return comments.subList(startIndex, comments.size());
+    }
+
+    return comments.subList(startIndex, endIndex);
   }
 }
