@@ -26,7 +26,7 @@ class CommentModel {
     this.comments.add(new Comment(++commentId, title, body, name));
   }
 
-  public List<Comment> getComments(Integer offset) {
+  public List<Comment> getComments(String sort, Integer offset) {
     int limit = 4;
     return sortComments("desc").subList(offset - limit, offset);
   }

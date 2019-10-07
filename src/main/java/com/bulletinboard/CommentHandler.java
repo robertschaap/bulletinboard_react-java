@@ -16,11 +16,14 @@ public class CommentHandler {
   public static String getComments(Request req, Response res) {
     res.type("application/json");
 
+    String sortParam = req.queryParams("sort");
+    String sort = sortParam.equals("desc") ? "desc" : "asc";
+
     String offsetParam = req.queryParams("offset");
-    Integer offsetInt = offsetParam == null ? 4 : Integer.parseInt(offsetParam);
+    Integer offset = offsetParam == null ? 4 : Integer.parseInt(offsetParam);
 
     HashMap<String, Object> data = new HashMap<>();
-    data.put("comments", model.getComments(offsetInt));
+    data.put("comments", model.getComments(sort, offset));
 
     return new ApiResponse(ApiStatusResponse.SUCCESS, data).toJson();
   };
