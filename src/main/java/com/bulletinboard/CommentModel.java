@@ -1,13 +1,14 @@
 package com.bulletinboard;
 
 import java.util.ArrayList;
+import java.util.List;
 
 class CommentModel {
-  ArrayList<Comment> comments = new ArrayList<Comment>();
+  List<Comment> comments = new ArrayList<Comment>();
   Integer commentId = 0;
 
   public CommentModel() {
-    this.comments.add(new Comment(++commentId, "title0", "body0", "name0"));
+    this.comments.add(new Comment(commentId, "title0", "body0", "name0"));
     this.comments.add(new Comment(++commentId, "title1", "body1", "name1"));
     this.comments.add(new Comment(++commentId, "title2", "body2", "name2"));
     this.comments.add(new Comment(++commentId, "title3", "body3", "name3"));
@@ -24,7 +25,8 @@ class CommentModel {
     this.comments.add(new Comment(++commentId, title, body, name));
   }
 
-  public ArrayList<Comment> getComments() {
-    return this.comments;
+  public List<Comment> getComments(Integer offset) {
+    int limit = 4;
+    return this.comments.subList(offset - limit, offset);
   }
 }
