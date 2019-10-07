@@ -37,8 +37,8 @@ class CommentModel {
       return this.comments;
     }
 
-    List<Comment> reversedComments = this.comments;
-    Collections.reverse(reversedComments);
-    return reversedComments;
+    List<Comment> comments = new ArrayList<Comment>(this.comments);
+    Collections.reverse(comments);
+    return comments;
   }
 }
