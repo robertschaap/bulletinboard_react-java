@@ -20,7 +20,7 @@ public class CommentHandler {
     String sort = sortParam.equals("desc") ? "desc" : "asc";
 
     String offsetParam = req.queryParams("offset");
-    Integer offset = offsetParam == null ? 4 : Integer.parseInt(offsetParam);
+    Integer offset = offsetParam == null ? 0 : Integer.parseInt(offsetParam);
 
     HashMap<String, Object> data = new HashMap<>();
     data.put("comments", model.getComments(sort, offset));

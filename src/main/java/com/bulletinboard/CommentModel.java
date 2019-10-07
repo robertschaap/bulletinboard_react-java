@@ -28,7 +28,8 @@ class CommentModel {
 
   public List<Comment> getComments(String sort, Integer offset) {
     int limit = 4;
-    return sortComments(sort).subList(offset - limit, offset);
+    int index = 4 + (offset * 4);
+    return sortComments(sort).subList(index - limit, index);
   }
 
   public List<Comment> sortComments(String sort) {
